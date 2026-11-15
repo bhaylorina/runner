@@ -1,11 +1,6 @@
 name: Automated Task Runner
 
 on:
-  schedule:
-    # Runs every 2 hours 40 minutes (9 times a day = 100% safe for 6-hour cookies)
-    - cron: '0 0,8,16 * * *'
-    - cron: '40 2,10,18 * * *'
-    - cron: '20 5,13,21 * * *'
   workflow_dispatch:
 
 jobs:
