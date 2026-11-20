@@ -1,4 +1,4 @@
-name: Automated Task Runner
+name: Automated Task Runner2
 
 on:
   workflow_dispatch:
