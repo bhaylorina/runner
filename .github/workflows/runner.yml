@@ -22,5 +22,11 @@ jobs:
           path: ~/openvpn-debs
           key: ${{ runner.os }}-openvpn-debs-v2
 
-      - name: Run Task Script
+      - name: Run Task Script (Indian VPN)
+        id: primary_script
+        continue-on-error: true # Isse workflow turant laal (fail) nahi hoga
         run: bash run_all.sh
+
+      - name: Run Fallback Script (If No Indian VPN Found)
+        if: steps.primary_script.outcome == 'failure'
+        run: bash run_all2.sh
