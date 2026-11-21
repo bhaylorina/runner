@@ -23,4 +23,4 @@ jobs:
           key: ${{ runner.os }}-openvpn-debs-v2
 
       - name: Run Task Script
-        run: bash run_all3.sh
+        run: bash run_all2.sh
