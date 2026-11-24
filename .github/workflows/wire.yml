@@ -1,0 +1,26 @@
+name: Automated wireguard
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Private Workspace
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.PRIVATE_REPO }}
+          token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 1
+
+      - name: Cache Binary Packages
+        id: cache-openvpn
+        uses: actions/cache@v4
+        with:
+          path: ~/openvpn-debs
+          key: ${{ runner.os }}-openvpn-debs-v2
+
+      - name: Run Task Script
+        run: bash run_wireguard.sh
